@@ -20,12 +20,12 @@ int main()
 	h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
 		ws->send(message, length, opCode);
 		});
-
+	uS::Async _async(h.getLoop());
+	_async.start([](uS::Async* handle) {
+		cout << "hello.world" << endl;
+		});
 	if (h.listen("127.0.0.1",3000)) {
-		uS::Async _async(h.getLoop());
-		_async.start([](uS::Async* handle) {
-			cout << "hello.world" << endl;
-			});
+		
 		h.run();
 	}
 }
