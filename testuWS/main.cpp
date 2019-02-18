@@ -16,10 +16,10 @@ int main()
 		string str{ "hello.world" };
 		resp->end(str.c_str(), str.length());
 		});
-	uS::Async _async(h.getLoop());
+	/*uS::Async _async(h.getLoop());
 	_async.start([](uS::Async* handle) {
 		cout << "hello.world" << endl;
-		});
+		});*/
 	h.onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
 		ws->send(message, length, opCode);
 		});
